@@ -16,6 +16,8 @@ param(
     [string]$Suite = ''
 )
 
+throw 'This inherited integration runner targets the capstone. Port the suites to bloodmatch_v2_test before using it in v2.'
+
 $db = 'bloodmatch_test'
 if (-not $Suite) { throw 'Select a current suite explicitly. For CP0 use -Suite staff_role_api.ps1; the old default full suite is retired.' }
 $retiredRoleSuites = @('phase4.ps1','phase5.ps1','phase6.ps1','phase7.ps1','phase8.ps1','phase9.ps1','phase10.ps1','phase11.ps1','phase12.ps1','donor_refresh.ps1','home_safety.ps1','home_respond.ps1','profile_view.ps1','rejection_reason.ps1','step4_email_flow.ps1')

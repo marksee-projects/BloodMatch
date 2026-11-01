@@ -18,7 +18,7 @@ final class Session
         }
 
         ini_set('session.use_strict_mode', '1');
-        session_name('bloodmatch_session');
+        session_name('bloodmatch_v2_session');
         if (!headers_sent()) {
             session_set_cookie_params([
                 'lifetime' => 0,

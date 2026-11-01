@@ -23,7 +23,7 @@ final class AppConfig
 
     public static function corsOrigins(): array
     {
-        $raw = Env::get('APP_CORS_ORIGINS', 'http://localhost:5173');
+        $raw = Env::get('APP_CORS_ORIGINS', 'http://localhost:5180');
         $origins = array_map(static fn (string $o): string => trim($o), explode(',', $raw));
         return array_values(array_filter($origins, static fn (string $o): bool => $o !== ''));
     }

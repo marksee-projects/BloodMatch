@@ -1,85 +1,47 @@
 # BloodMatch
 
-Peer-to-peer blood donor coordination for DeMolay members in Bataan, Philippines.
+Version 2 of a peer-to-peer blood donor coordination platform, being adapted for a broader community.
 
-BloodMatch brings blood requests, potential donor matching, and donation coordination into one place. Members can organize requests and responses, while authorized staff can review membership and monitor activity.
+This repository reuses the React, PHP, and MySQL application from the [capstone project](https://github.com/marksee-projects/BloodMatch_Ver2). It is an active development baseline: chapter membership, Bataan location references, verification, and staff policies still need adaptation before general use.
 
-**[Visit the website](https://blood-match-mu.vercel.app)** · **[Local setup](docs/getting-started.md)** · **[Documentation](docs/README.md)** · **[Contributing](CONTRIBUTING.md)**
+## Local development
 
-## Project overview
+Use Node.js 24+ (recommended version in [.nvmrc](.nvmrc)), npm, PHP 8.2+ with PDO MySQL, and MySQL/MariaDB. Windows/XAMPP is supported.
 
-The application brings together these workflows:
+From the repository root:
 
-- Member registration, email verification, profiles, and membership review.
-- Blood requests with urgency, facility information, and lifecycle tracking.
-- Potential donor matching using blood-type compatibility, eligibility, and proximity.
-- Donor offers, requester acceptance, and consent-based private chat.
-- Donation reporting, acknowledgment, and staff review of exceptions.
-- In-app notifications, configured email delivery, and chapter demand summaries.
-- An Admin/Officer portal for member management, reports, and audit review.
+~~~powershell
+npm run setup
+npm run dev
+~~~
 
-These describe the application scope rather than a certification of the deployed website. See the [current feature review](docs/features/BLOODMATCH_CURRENT_REQUIREMENTS_STATUS.md) for verification limits and outstanding work.
-
-BloodMatch supports coordination. Final donor eligibility and medical compatibility require assessment by qualified healthcare professionals.
-
-## Technology
-
-| Layer | Stack |
+| Service | Version 2 default |
 | --- | --- |
-| Frontend | React 18, Vite, React Router, TanStack Query |
-| Backend | PHP 8, session-based JSON API, PDO |
-| Database | MySQL / MariaDB with versioned SQL migrations |
-| Local development | XAMPP, Node.js, PowerShell |
+| Frontend | http://localhost:5180 |
+| API | http://127.0.0.1:8010 |
+| Development database | bloodmatch_v2 |
+| Planned test database | bloodmatch_v2_test |
 
-## Run locally
+Setup installs frontend dependencies and creates fresh local configuration. It does not create a database, apply inherited migrations, send email, install workers, or deploy. The frontend and CSRF endpoint can run before schema preparation; authenticated features require a configured v2 database.
 
-Local development uses a React frontend and a separate PHP backend. You will need Node.js with npm, PHP 8, and a configured MySQL/MariaDB database.
+## Commands
 
-1. Follow the [setup guide](docs/getting-started.md) to configure your local environment and database. Some migrations require dedicated review helpers.
-2. Install frontend dependencies:
+| Command | Purpose |
+| --- | --- |
+| npm run setup | Initialize local files and install frontend dependencies |
+| npm run doctor | Check local prerequisites without connecting to MySQL |
+| npm run dev | Start the isolated v2 frontend and API |
+| npm run check | PHP syntax and selected offline policy checks |
+| npm run build | Build the React application |
 
-   ```powershell
-   cd frontend
-   npm.cmd ci
-   cd ..
-   ```
+## Development notes
 
-3. From the repository root, start both development servers:
+- [Environment guide](docs/development-v2.md)
+- [Version 2 roadmap](docs/v2-roadmap.md)
+- [Contributing](CONTRIBUTING.md)
 
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File .\start-dev.ps1
-   ```
+Existing schema, API, test, and checkpoint documents record the inherited capstone implementation. They do not establish the v2 product policy or a ready-to-run fresh database installation.
 
-Open **http://localhost:5173**. The frontend forwards `/api` requests to the PHP backend at `http://127.0.0.1:8000`.
+## Origin
 
-## Repository structure
-
-```text
-backend/       PHP API, application services, and private runtime storage
-database/      Schema migrations, reference seeds, and maintenance tools
-frontend/      React application and public assets
-docs/          Setup, architecture, feature reviews, and implementation records
-scripts/       Development, demo, and operational helpers
-tests/         Focused offline checks and isolated integration suites
-start-dev.ps1  Local development launcher
-```
-
-## Development checks
-
-Build the frontend from `frontend/`:
-
-```powershell
-npm.cmd run build
-```
-
-Database-backed tests need a separate test environment. The historical `tests/run_all.ps1` runner is retired; see [testing guidance](docs/getting-started.md#testing) before selecting a suite. Earlier passing test counts in implementation records are historical results.
-
-## Documentation
-
-- [Getting started](docs/getting-started.md): environment, startup, and testing.
-- [Documentation index](docs/README.md): architecture, requirements, and operational references.
-- [Contribution guide](CONTRIBUTING.md): proposing changes and submitting pull requests.
-
-## Project origin
-
-This repository continues development from [Ruahsen/BloodMatch](https://github.com/Ruahsen/BloodMatch). Git history retains the original contributions alongside subsequent work in this fork.
+BloodMatch builds on [Ruahsen/BloodMatch](https://github.com/Ruahsen/BloodMatch) and the subsequent [marksee-projects capstone development](https://github.com/marksee-projects/BloodMatch_Ver2). Git history preserves the original contributions. Retain attribution and existing third-party notices.

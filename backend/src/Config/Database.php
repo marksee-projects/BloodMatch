@@ -24,9 +24,13 @@ final class Database
         $user = Env::get('DB_USER', '');
         $pass = Env::get('DB_PASS', '');
 
+        if (in_array($name, ['bloodmatch', 'bloodmatch_test'], true)) {
+            throw new RuntimeException('The capstone database is blocked in v2. Configure a separate v2 database.');
+        }
+
         $isolated = Env::get('BLOODMATCH_TEST_ISOLATION', '') === '1';
-        if ($isolated && ($host !== '127.0.0.1' || $name !== 'bloodmatch_test' || $port !== '3306')) {
-            throw new RuntimeException('Isolated tests require bloodmatch_test on 127.0.0.1:3306.');
+        if ($isolated && ($host !== '127.0.0.1' || $name !== 'bloodmatch_v2_test' || $port !== '3306')) {
+            throw new RuntimeException('Isolated tests require bloodmatch_v2_test on 127.0.0.1:3306.');
         }
 
         if ($name === '' || $user === '') {
@@ -34,10 +38,6 @@ final class Database
         }
 
         $portsToTry = [(string) $port];
-        $altPort = ((string) $port === '3307') ? '3306' : '3307';
-        if (!$isolated && !in_array($altPort, $portsToTry, true)) {
-            $portsToTry[] = $altPort;
-        }
 
         $lastException = null;
         foreach ($portsToTry as $tryPort) {
@@ -50,7 +50,7 @@ final class Database
                 ]);
                 if ($isolated) {
                     $target = self::$pdo->query('SELECT DATABASE() AS db, @@port AS port')->fetch();
-                    if ($target['db'] !== 'bloodmatch_test' || (int)$target['port'] !== 3306) {
+                    if ($target['db'] !== 'bloodmatch_v2_test' || (int)$target['port'] !== 3306) {
                         self::$pdo = null;
                         throw new RuntimeException('Isolated database target mismatch.');
                     }
