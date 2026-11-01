@@ -1,5 +1,8 @@
 # Environment & Secrets
 .env
+.env.*
+!.env.example
+!.env.*.example
 
 # Dependencies & Builds
 node_modules/
@@ -7,8 +10,9 @@ dist/
 frontend/dist/
 vendor/
 
-# AI Workspace & Metadata
-# .agents/ (unignored by request)
+# Local development tooling
+.agents/
+docs/ai_context/
 skills-lock.json
 
 # Logs & Local Storage
@@ -17,3 +21,12 @@ logs/
 backend/storage/
 .phpunit.result.cache
 scratch/
+docs/phpmyadmin_designer_backup_*.json
+docs/demo/previous-isolated-20261022/
+
+# Operating system & editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo

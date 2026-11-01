@@ -1,6 +1,6 @@
 ﻿# BloodMatch Current Requirements and Feature Status
 
-Reviewed: **20 October 2026 (Asia/Manila)**. Baseline: [System Requirements and Features](../../.agents/requirements/BloodMatch_System_Requirements_and_Features.md). Related evidence: [current flow audit](../BLOODMATCH_FLOW_SAFETY_AUDIT.md) and [71-item feature matrix](../research/SOP_OBJECTIVES_FEATURE_AUDIT.md).
+Reviewed: **20 October 2026 (Asia/Manila)**. Baseline: [System Requirements and Features](../requirements.md). Related evidence: [current flow audit](../BLOODMATCH_FLOW_SAFETY_AUDIT.md) and [71-item feature matrix](../research/SOP_OBJECTIVES_FEATURE_AUDIT.md).
 
 The baseline predates several approved workflow changes. This companion distinguishes historical requirements, later approvals, actual implementation and verification limits. Its original review was documentation-only; the focused update below now records approved source/test changes. Configuration and application database contents were not changed.
 

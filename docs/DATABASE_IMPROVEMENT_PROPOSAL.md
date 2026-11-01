@@ -190,7 +190,7 @@ No such execution is authorized by preparing this document.
 ## 9. Supporting sources
 
 - [Current requirements and feature status](features/BLOODMATCH_CURRENT_REQUIREMENTS_STATUS.md)
-- [Requirements baseline](../.agents/requirements/BloodMatch_System_Requirements_and_Features.md), interpreted alongside approved current workflow changes
+- [Requirements baseline](requirements.md), interpreted alongside approved current workflow changes
 - [Current flow/safety audit](BLOODMATCH_FLOW_SAFETY_AUDIT.md), including its historical-snapshot qualifications
 - [Donation consolidation evidence](DONATION_CONSOLIDATION_032.md) and [retirement evidence](DONATION_SOURCE_RETIREMENT_035.md)
 - [Separate non-response timing proposal](research/NON_RESPONSE_48_HOUR_CHANGE_PROPOSAL.md)

@@ -47,7 +47,7 @@ foreach ($files as $file) {
     if ($name === '021_create_live_chat.sql') {
         $existing=(int)$pdo->query("SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME IN ('conversations','conversation_participants','messages')")->fetchColumn();
         if ($existing>0) {
-            fwrite(STDERR,'[migrations] Imported chat tables already exist but the chat ledger entry is missing. Use the reviewed database/demo_maintenance.php repair-import action; do not rerun CREATE TABLE.'.PHP_EOL);
+            fwrite(STDERR,'[migrations] Imported chat tables already exist but the chat ledger entry is missing. Review the existing schema and reconcile its migration history before continuing; do not rerun CREATE TABLE.'.PHP_EOL);
             exit(1);
         }
     }
